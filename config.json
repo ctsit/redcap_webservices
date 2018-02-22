@@ -1,0 +1,98 @@
+{
+    "name": "REDCap Web Services",
+    "namespace": "REDCapWebServices\\ExternalModule",
+    "description": "Provides a way to expose SQL query results to the external world. <strong><a href=\"https://github.com/ctsit/redcap_webservices\">See full documentation here</a></strong>.",
+    "permissions": [
+        "redcap_every_page_top"
+    ],
+    "authors": [
+        {
+            "name": "Philip Chase",
+            "email": "pbc@ufl.edu",
+            "institution": "University of Florida - CTSI"
+        },
+        {
+            "name": "Taryn Stoffs",
+            "email": "tls@ufl.edu",
+            "institution": "University of Florida - CTSI"
+        },
+        {
+            "name": "Tiago Bember",
+            "email": "tbembersimeao@ufl.edu",
+            "institution": "University of Florida - CTSI"
+        }
+    ],
+    "system-settings": [
+        {
+            "key": "expose_sql_error",
+            "name": "Expose SQL error on response",
+            "type": "checkbox",
+            "helper": "Useful for testing or debugging purposes.<br>Warning: SQL message errors can expose details about your SQL query."
+        },
+        {
+            "key": "credentials",
+            "name": "Crendentials",
+            "type": "descriptive",
+            "helper": "If your queries return sensitive information, username and password can be provided as a security mechanism. If the credentials are set, the caller must use <a href=\"https://en.wikipedia.org/wiki/Basic_access_authentication\"><b><small>Basic access authentication</small></b></a> on the requests. In this case, it is highly recommended to make the requests over HTTPS."
+        },
+        {
+            "key": "username",
+            "name": "Username",
+            "type": "text"
+        },
+        {
+            "key": "password",
+            "name": "Password",
+            "type": "custom",
+            "source": "js/password.js",
+            "functionName": "REDCapWebServices.passwordFieldHandler"
+        },
+        {
+            "key": "queries",
+            "name": "SQL Queries",
+            "required": false,
+            "type": "sub_settings",
+            "repeatable": "true",
+            "sub_settings": [
+                {
+                    "key": "query_name",
+                    "name": "Name",
+                    "type": "text",
+                    "required": true
+                },
+                {
+                    "key": "query_id",
+                    "name": "ID",
+                    "type": "text",
+                    "helper": "The identifier of the query, which is passed as <em>query_id</em> parameter in the request URL, e.g. <em>(...)<b>&query_id=query_id_example</b></em>.", 
+                    "required": true
+                },
+                {
+                    "key": "query_description",
+                    "name": "Description",
+                    "type": "textarea"
+                },
+                {
+                    "key": "query_sql",
+                    "name": "SQL code",
+                    "type": "textarea",
+                    "helper": "Do not include \"SELECT\" - it is already set as default.<br><br>To provide parameters in your query, use the pattern <em>:param</em>, e.g. <em>WHERE project_name = \"<b>:name</b>\"</em>. The parameters values are required in the URL query, e.g. <em>(...)<b>&name=project_test</b></em>",
+                    "required": true
+                }
+            ]
+        }
+    ],
+	"links": {
+	   "control-center": [
+		  {
+			 "name": "REDCap Web Services",
+			 "icon": "application_go",
+			 "url": "plugins/webservices_list.php"
+		  }
+	   ]
+	},
+    "enable-every-page-hooks-on-system-pages": true,
+    "compatibility": {
+        "redcap-version-min": "8.0.3"
+    }
+}
