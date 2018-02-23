@@ -64,6 +64,9 @@ There are other error handlings available, which are not shown on these examples
 ### Parameterized SQL queries
 You may provide parameters to your SQL queries by using the pattern `:param`, e.g. `(...) WHERE project_name = ":name"`. The parameters are required in the endpoint URL query, e.g. `https://yourEndpoint?(...)&name=project_test`.
 
+#### Project ID parameter
+If you specify a `:pid` parameter in your query, the service will only work for projects that have REDCap Web Services enabled. It is a good way to restrict the service scope.
+
 ### Basic access authentication
 If your queries return sensitive information, username and password can be provided as a security mechanism. If the credentials are set, the caller must use [Basic access authentication](https://en.wikipedia.org/wiki/Basic_access_authentication) on the requests. In this case, it is highly recommended to make the requests over HTTPS.
 

@@ -82,15 +82,15 @@
             ]
         }
     ],
-	"links": {
-	   "control-center": [
-		  {
-			 "name": "REDCap Web Services",
-			 "icon": "application_go",
-			 "url": "plugins/webservices_list.php"
-		  }
-	   ]
-	},
+    "links": {
+       "control-center": [
+          {
+             "name": "REDCap Web Services",
+             "icon": "application_go",
+             "url": "plugins/webservices_list.php"
+          }
+       ]
+    },
     "enable-every-page-hooks-on-system-pages": true,
     "compatibility": {
         "redcap-version-min": "8.0.3"
