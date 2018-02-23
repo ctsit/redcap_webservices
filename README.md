@@ -1,7 +1,7 @@
 # REDCap Web Services
 Provides a way to expose SQL query results to the external world.
 
-# Motivation
+## Motivation
 The motivation of this project is the use case where an external website needs to display statistics of a given REDCap project. A solution for that is to give the client an endpoint that returns a JSON containing the results of a SQL query. That's basically how this module works.
 
 ## Prerequisites
@@ -70,7 +70,7 @@ If you specify a `:pid` parameter in your query, the service will only work for 
 ### Basic access authentication
 If your queries return sensitive information, username and password can be provided as a security mechanism. If the credentials are set, the caller must use [Basic access authentication](https://en.wikipedia.org/wiki/Basic_access_authentication) on the requests. In this case, it is highly recommended to make the requests over HTTPS.
 
-Here is an example of how to test your endpoint with authentication using CURL (for user `test` and password `123`):
+Here is an example of how to test your endpoint with authentication using CURL (user `test`, password `123`):
 
 ``` shell
 $ curl --user test:123 '<YOUR_ENDPOINT_URL>'
