@@ -24,9 +24,60 @@ The resulting list of endpoints can be seen at **Control Center > REDCap Web Ser
 
 ![Configuration form](img/webservices-list.png)
 
+### Query examples
+
+Here are some examples of queries that produce deidentified summary data that could be used to measure the data collection effort of a study
+
+* Return the record for a project identified by its project_id
+
+```
+record_count from redcap_record_counts where project_id = ":pid" or project_id in (":pids")
+```
+
+Returns
+
+```
+{"success":true,"data":[{"record_count":"25"}]}
+```
+
+* Count the number of study participants at each site on a project specified by "pid"
+
+```
+value, rcdag.group_name, count(*) as qty
+from redcap_data as rcd
+inner join redcap_data_access_groups as rcdag on (rcd.value = rcdag.group_id)
+where field_name = "__GROUPID__" and rcd.project_id = ":pid"
+group by value
+```
+
+Returns
+
+```
+{"success":true,"data":[{"value":"1","group_name":"FSU","qty":"2"},{"value":"2","group_name":"UF","qty":"2"}]}
+```
+
+* Show the number of new informed consents by week
+
+Assuming the date of every informed consent form is recorded in REDCap field identified by "consent_date" you could group the data by week for a project identified by "pid"
+
+```
+concat_ws("-", year(value), week(value)) as icf_week, count(*) as qty
+from redcap_data as rcd
+where field_name = ":consent_date_field" and rcd.project_id = ":pid"
+group by icf_week
+order by icf_week asc
+```
+
+Returns
+
+```
+{"success":true,"data":[{"icf_week":"2017-49","qty":"1"},{"icf_week":"2017-50","qty":"12"},{"icf_week":"2017-51","qty":"3"},{"icf_week":"2018-0","qty":"1"},{"icf_week":"2018-1","qty":"1"},{"icf_week":"2018-2","qty":"1"}]}
+```
+
+
 ### Response examples
 
-Here is an example of a well succeeded response from endpoint `test` defined, in the example above:
+Here is an example of a successful response from endpoint `test` defined, in the example above:
 
 ``` json
 {
