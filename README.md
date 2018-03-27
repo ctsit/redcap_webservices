@@ -2,7 +2,7 @@
 Provides a way to expose SQL query results to the external world.
 
 ## Motivation
-The motivation of this project is the use case where an external website needs to display statistics of a given REDCap project. A solution for that is to give the client an endpoint that returns a JSON containing the results of a SQL query. That's basically how this module works.
+The motivation of this project is the use case where an external website needs to display statistics of a given REDCap project or a REDCap system. A solution for that is to give the client an endpoint that returns a JSON containing the results of a SQL query. SQL queries are statically defined within the web service to allow admins to verify queries are written to only return summary data with no risk of exposing sensitive data.
 
 ## Prerequisites
 - REDCap >= 8.0.3
