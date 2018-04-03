@@ -76,7 +76,7 @@
                     "key": "query_sql",
                     "name": "SQL code",
                     "type": "textarea",
-                    "helper": "Do not include \"SELECT\" - it is already set as default.<br><br>To provide parameters in your query, use the pattern <em>:param</em>, e.g. <em>WHERE project_name = \"<b>:name</b>\"</em>. The parameters values are required in the URL query, e.g. <em>(...)<b>&name=project_test</b></em>",
+                    "helper": "Do not include \"SELECT\" - it is already set as default.<br><br>To provide parameters in your query, use the pattern <em>:param</em>, e.g. <em>WHERE project_name = <b>:name</b></em>. The parameters values are required in the URL query, e.g. <em>(...)<b>&name=project_test</b></em>",
                     "required": true
                 }
             ]

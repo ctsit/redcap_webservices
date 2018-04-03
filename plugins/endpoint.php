@@ -36,8 +36,13 @@ foreach ($settings['queries'] as $query_info) {
                 $module->returnErrorResponse('Missing param \'' . $arg . '\'.');
             }
 
+            $value = db_escape($_GET[$arg]);
+            if (!is_numeric($value)) {
+                $value = '"' . db_real_escape_string($value) . '"';
+            }
+
             // Replacing wildcards.
-            $sql = str_replace(':' . $arg, db_escape($_GET[$arg]), $sql);
+            $sql = str_replace(':' . $arg, $value, $sql);
         }
     }
 
