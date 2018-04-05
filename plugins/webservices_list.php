@@ -46,7 +46,7 @@ foreach ($settings['queries'] as $query_info) {
     <p>There are no endpoints yet.</p>
 <?php else: ?>
     <div class="authentication-status">
-        <b>Basic authentication enabled: </b><?php echo $settings['username'] && $settings['password'] ? 'Yes' : 'No'; ?>
+        <b>Basic authentication enabled: </b><?php echo $settings['ws_username'] && $settings['ws_password'] ? 'Yes' : 'No'; ?>
     </div>
     <div class="table-responsive">
         <table id="redcap-webservices-list" class="table table-striped">
