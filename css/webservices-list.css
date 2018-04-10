@@ -1,0 +1,25 @@
+#pagecontainer {
+    max-width: 1500px;
+}
+
+#redcap-webservices-list td:last-child {
+    padding-left: 0;
+}
+
+.authentication-status {
+    margin: 20px 0;
+    text-align: right;
+}
+
+.query-url {
+    width: 30%;
+}
+
+.query-url input {
+    width: 100%;
+}
+
+.query-url-clipboard button {
+    font-size: 15px;
+    padding: 0px 4px;
+}
