@@ -2,16 +2,16 @@
 
 $settings = $module->getFormattedSettings();
 
-if ($settings['username'] && $settings['password']) {
+if ($settings['ws_username'] && $settings['ws_password']) {
     if (!isset($_SERVER['PHP_AUTH_USER'])) {
         $module->returnErrorResponse('Missing user.');
     }
 
-    if ($_SERVER['PHP_AUTH_USER'] != $settings['username']) {
+    if ($_SERVER['PHP_AUTH_USER'] != $settings['ws_username']) {
         $module->returnErrorResponse('Invalid user.');
     }
 
-    if ($_SERVER['PHP_AUTH_PW'] != $settings['password']) {
+    if ($_SERVER['PHP_AUTH_PW'] != $settings['ws_password']) {
         $module->returnErrorResponse('Password does not match.');
     }
 }

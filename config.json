@@ -36,12 +36,12 @@
             "helper": "If your queries return sensitive information, username and password can be provided as a security mechanism. If the credentials are set, the caller must use <a href=\"https://en.wikipedia.org/wiki/Basic_access_authentication\"><b><small>Basic access authentication</small></b></a> on the requests. In this case, it is highly recommended to make the requests over HTTPS."
         },
         {
-            "key": "username",
+            "key": "ws_username",
             "name": "Username",
             "type": "text"
         },
         {
-            "key": "password",
+            "key": "ws_password",
             "name": "Password",
             "type": "custom",
             "source": "js/password.js",
