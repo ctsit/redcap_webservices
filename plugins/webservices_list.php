@@ -3,7 +3,7 @@
 require_once APP_PATH_DOCROOT . 'ControlCenter/header.php';
 
 $settings = $module->getFormattedSettings();
-$base_url = $module->getUrl('plugins/endpoint.php');
+$base_url = $module->getUrl('plugins/endpoint.php', true);
 
 $rows = array();
 foreach ($settings['queries'] as $query_info) {
