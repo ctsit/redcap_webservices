@@ -1,6 +1,11 @@
 # Change Log
 All notable changes to the REDCap Web Services project will be documented in this file.
 
+## [1.0.3] - 2018-05-21
+### Changed
+- Using version-less API endpoint. (Tiago Bember Simeao)
+
+
 ## [1.0.2] - 2018-04-24
 ### Changed
 - Enabling no-auth on webservices endpoint. (Tiago Bember Simeao)
