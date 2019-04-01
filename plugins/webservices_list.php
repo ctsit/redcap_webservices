@@ -33,7 +33,7 @@ foreach ($settings['queries'] as $query_info) {
         'query-url-clipboard' => RCView::button(array(
             'class' => 'btn btn-sm btn-default',
             'title' => 'Copy URL to clipboard',
-        ), RCView::span(array('class' => 'glyphicon glyphicon-copy'))),
+        ), RCView::span(array('class' => 'glyphicon glyphicon-copy'), false)),
     );
 }
 ?>
