@@ -1,6 +1,11 @@
 # Change Log
 All notable changes to the REDCap Web Services project will be documented in this file.
 
+## [1.0.4] - 2019-04-03
+### Changed
+- Add the require 2nd param in call to RCView::span (Philip Chase)
+
+
 ## [1.0.3] - 2018-05-21
 ### Changed
 - Using version-less API endpoint. (Tiago Bember Simeao)
