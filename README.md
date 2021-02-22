@@ -193,3 +193,50 @@ Returns
   ]
 }
 ```
+
+* Show project and user activity summary
+
+```
+(SELECT count(*)  as n
+FROM ctsi_redcap.redcap_projects
+where date_deleted is null) as count_of_existing_projects,
+(select count(*) as n
+from redcap_user_information
+where user_suspended_time is NULL) as count_of_users,
+(SELECT count(*)  as n
+FROM ctsi_redcap.redcap_projects
+where date_deleted is null and
+datediff(now(), creation_time) <= 30) as count_of_projects_created_in_the_past_30_days,
+(SELECT count(*)  as n
+FROM ctsi_redcap.redcap_projects
+where date_deleted is null and
+datediff(now(), production_time) <= 30) as count_of_projects_moved_to_production_in_the_past_30_days,
+(select count(*) as n
+from redcap_user_information
+where datediff(now(), user_lastactivity) <= 30
+and user_suspended_time is NULL) as count_of_users_active_in_the_past_30_days,
+(select count(*) from redcap_projects
+where 
+last_logged_event is not null and 
+date_deleted is null and 
+datediff(now(), last_logged_event) <= 30) as count_of_projects_active_in_the_past_30_days
+from dual
+```
+
+Returns
+
+```
+{
+  "success": true,
+  "data": [
+    {
+      "count_of_existing_projects": "3296",
+      "count_of_users": "3232",
+      "count_of_projects_created_in_the_past_30_days": "119",
+      "count_of_projects_moved_to_production_in_the_past_30_days": "49",
+      "count_of_users_active_in_the_past_30_days": "1370",
+      "count_of_projects_active_in_the_past_30_days": "760"
+    }
+  ]
+}
+```
